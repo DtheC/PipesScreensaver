@@ -33,7 +33,8 @@ public class DrawLineBasedOnDirection : MonoBehaviour
         SetPossibilities();
         PipeDirection nextDir = GetRandomDirection();
         if (nextDir == null) {
-          Debug.LogError("reached end of possible moves! Moving to free cell");
+          // Debug.LogError("reached end of possible moves! Moving to free cell");
+          ResetSceneMonitor.Instance.AddReset();
           CurrentPosition = CellStateManager.Instance.GetFreeCell();
           return;
         }

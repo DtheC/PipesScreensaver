@@ -12,6 +12,11 @@ public class CellStateManager : MonoBehaviour
   void Awake()
   {
     Instance = this;
+    Reset();
+  }
+
+  public void Reset()
+  {
     visitedCells = new int[(int)cellCount.x, (int)cellCount.y, (int)cellCount.z];
     for (int x = 0; x < cellCount.x; x++)
     {
@@ -32,14 +37,14 @@ public class CellStateManager : MonoBehaviour
 
   public Vector3 GetFreeCell()
   {
-      List<Vector3> freeCells = new List<Vector3>();
-       for (int x = 0; x < cellCount.x; x++)
+    List<Vector3> freeCells = new List<Vector3>();
+    for (int x = 0; x < cellCount.x; x++)
     {
       for (int y = 0; y < cellCount.y; y++)
       {
         for (int z = 0; z < cellCount.z; z++)
         {
-            if (visitedCells[x, y, z] == 0) freeCells.Add(new Vector3(x, y, z));
+          if (visitedCells[x, y, z] == 0) freeCells.Add(new Vector3(x, y, z));
         }
       }
     }
