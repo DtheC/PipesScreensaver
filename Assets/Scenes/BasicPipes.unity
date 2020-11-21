@@ -307,6 +307,8 @@ GameObject:
   - component: {fileID: 2032571928}
   - component: {fileID: 2032571931}
   - component: {fileID: 2032571930}
+  - component: {fileID: 2032571929}
+  - component: {fileID: 2032571932}
   m_Layer: 0
   m_Name: MakePipes
   m_TagString: Untagged
@@ -328,6 +330,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032571929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032571927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd37677e3b9a3d40a8dbf652602479f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PipeDirections:
+  - {fileID: 11400000, guid: 6d69dc8b475e48040b1a5a34688149e9, type: 2}
+  - {fileID: 11400000, guid: b56ee9834e433cf45947c2db59048324, type: 2}
+  - {fileID: 11400000, guid: 9b444565247ca8445a3ed32305cfc5d7, type: 2}
+  - {fileID: 11400000, guid: 94bc675d5cdd875479c6dcffa3cdf4a7, type: 2}
+  - {fileID: 11400000, guid: 130f4fa1d1930a44a82da978e1c0c523, type: 2}
+  - {fileID: 11400000, guid: 46c3f701f092c5e4182a678d8a4b8b89, type: 2}
+  CurrentPosition: {x: 3, y: 3, z: 2}
+  LastDirection: {fileID: 0}
+  lineColour: {r: 0, g: 0.85199004, b: 0.9716981, a: 1}
 --- !u!114 &2032571930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +371,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94bc675d5cdd875479c6dcffa3cdf4a7, type: 2}
   - {fileID: 11400000, guid: 130f4fa1d1930a44a82da978e1c0c523, type: 2}
   - {fileID: 11400000, guid: 46c3f701f092c5e4182a678d8a4b8b89, type: 2}
-  CurrentPosition: {x: 0, y: 0, z: 0}
+  CurrentPosition: {x: 3, y: 2, z: 3}
   LastDirection: {fileID: 0}
+  lineColour: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &2032571931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,4 +386,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f0b9f1b42748f46ab59b7ef10af569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellCount: {x: 5, y: 5, z: 5}
+  cellCount: {x: 15, y: 15, z: 5}
+--- !u!114 &2032571932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032571927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd37677e3b9a3d40a8dbf652602479f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PipeDirections:
+  - {fileID: 11400000, guid: 6d69dc8b475e48040b1a5a34688149e9, type: 2}
+  - {fileID: 11400000, guid: b56ee9834e433cf45947c2db59048324, type: 2}
+  - {fileID: 11400000, guid: 9b444565247ca8445a3ed32305cfc5d7, type: 2}
+  - {fileID: 11400000, guid: 94bc675d5cdd875479c6dcffa3cdf4a7, type: 2}
+  - {fileID: 11400000, guid: 130f4fa1d1930a44a82da978e1c0c523, type: 2}
+  - {fileID: 11400000, guid: 46c3f701f092c5e4182a678d8a4b8b89, type: 2}
+  CurrentPosition: {x: 4, y: 3, z: 2}
+  LastDirection: {fileID: 0}
+  lineColour: {r: 0.09611962, g: 0.754717, b: 0.15575904, a: 1}

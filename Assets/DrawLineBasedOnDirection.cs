@@ -7,10 +7,15 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     public List<PipeDirection> PipeDirections;
     public Vector3 CurrentPosition;
     public PipeDirection LastDirection;
+    public Color lineColour;
 
     Dictionary<PipeDirection, float> PipeChances;
     void Start() {
-        CurrentPosition = new Vector3();
+        // CurrentPosition = new Vector3(
+        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.x),
+        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.y),
+        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.z)
+        // );
         PipeChances = new Dictionary<PipeDirection, float>();
         PipeDirections.ForEach(dir => PipeChances.Add(dir, 1f));
         StartCoroutine(DrawRoutine());
@@ -19,7 +24,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     IEnumerator DrawRoutine() {
         while(true) {
             DrawPipe();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.2f);
         }
     }
 
@@ -32,7 +37,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
           return;
         }
         // int index = Random.Range(0, PipeDirections.Count);
-        Debug.DrawLine(CurrentPosition, CurrentPosition + nextDir.AsVector3(), Color.red, 10000f);
+        Debug.DrawLine(CurrentPosition, CurrentPosition + nextDir.AsVector3(), lineColour, 10000f);
         CurrentPosition += nextDir.AsVector3();
         LastDirection = nextDir;
         // Set cell as visited in CellManager
