@@ -24,7 +24,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     IEnumerator DrawRoutine() {
         while(true) {
             DrawPipe();
-            yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(.05f);
         }
     }
 
@@ -38,7 +38,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
           return;
         }
         // int index = Random.Range(0, PipeDirections.Count);
-        Debug.DrawLine(CurrentPosition, CurrentPosition + nextDir.AsVector3(), lineColour, 10000f);
+        // Debug.DrawLine(CurrentPosition, CurrentPosition + nextDir.AsVector3(), lineColour, 10000f);
         DrawPipePrefab.Instance.DrawPrefab(CurrentPosition, nextDir.AsVector3(), lineColour, LastDirection != nextDir);
         CurrentPosition += nextDir.AsVector3();
         LastDirection = nextDir;
