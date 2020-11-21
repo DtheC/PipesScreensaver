@@ -11,11 +11,11 @@ public class DrawLineBasedOnDirection : MonoBehaviour
 
     Dictionary<PipeDirection, float> PipeChances;
     void Start() {
-        // CurrentPosition = new Vector3(
-        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.x),
-        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.y),
-        //   Random.Range(0, (int) CellStateManager.Instance.cellCount.z)
-        // );
+        CurrentPosition = new Vector3(
+          Random.Range(0, (int) CellStateManager.Instance.cellCount.x),
+          Random.Range(0, (int) CellStateManager.Instance.cellCount.y),
+          Random.Range(0, (int) CellStateManager.Instance.cellCount.z)
+        );
         PipeChances = new Dictionary<PipeDirection, float>();
         PipeDirections.ForEach(dir => PipeChances.Add(dir, 1f));
         StartCoroutine(DrawRoutine());
@@ -24,7 +24,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     IEnumerator DrawRoutine() {
         while(true) {
             DrawPipe();
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.01f);
         }
     }
 
@@ -56,6 +56,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
       if (LastDirection == null) return;
       if (LastDirection.opposite == null) return;
       PipeChances[LastDirection.opposite] = 0f; // Do not go the direction you came
+      PipeChances[LastDirection] = 3f; // Make it more likely to go in the same direction as you are already heading
 
       // Get blocked cells (previously visited) and set their possibility to 0
       List<PipeDirection> blockedSpaces = CellStateManager.Instance.GetBlockedDirections(CurrentPosition, PipeDirections);

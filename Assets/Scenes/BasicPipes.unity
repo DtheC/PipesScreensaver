@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f0b9f1b42748f46ab59b7ef10af569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellCount: {x: 15, y: 15, z: 5}
+  cellCount: {x: 15, y: 15, z: 15}
 --- !u!114 &2032571932
 MonoBehaviour:
   m_ObjectHideFlags: 0
