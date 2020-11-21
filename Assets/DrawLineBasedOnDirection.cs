@@ -37,29 +37,6 @@ public class DrawLineBasedOnDirection : MonoBehaviour
         LastDirection = nextDir;
         // Set cell as visited in CellManager
         CellStateManager.Instance.MarkAsVisited(CurrentPosition);
-
-        // int nextX = lastX;
-        // int nextY = lastY;
-        // int nextZ = lastZ;
-        // int direction = Random.Range(0, 1f) < .5f ? -1 : 1;
-        // float vector = Random.Range(0f, 1f);
-        // if (vector < .3f) { // X
-        //     nextX += direction;
-        // } else if (vector < .6f) {
-        //     nextY += direction;
-        // } else {
-        //     nextZ += direction;
-        // }
-        // // grid[nextX, nextY, nextZ] = 1;
-        // Debug.LogError(direction);
-        // Vector3 last = new Vector3(lastX, lastY, lastZ);
-        // Vector3 next = new Vector3(nextX, nextY, nextZ);
-        // Debug.LogError(last);
-        // Debug.LogError(next);
-        // Debug.DrawLine(last, next, Color.red, 10000f);
-        // lastX = nextX;
-        // lastY = nextY;
-        // lastZ = nextZ;
     }
 
   void ResetPossibilities()
