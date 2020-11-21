@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class CellStateManager : MonoBehaviour
   public static CellStateManager Instance;
   public int[,,] visitedCells;
   public Vector3 cellCount;
+  static System.Random random = new System.Random();
   void Awake()
   {
     Instance = this;
@@ -26,6 +28,23 @@ public class CellStateManager : MonoBehaviour
   public void MarkAsVisited(Vector3 position)
   {
     visitedCells[(int)position.x, (int)position.y, (int)position.z] = 1;
+  }
+
+  public Vector3 GetFreeCell()
+  {
+      List<Vector3> freeCells = new List<Vector3>();
+       for (int x = 0; x < cellCount.x; x++)
+    {
+      for (int y = 0; y < cellCount.y; y++)
+      {
+        for (int z = 0; z < cellCount.z; z++)
+        {
+            if (visitedCells[x, y, z] == 0) freeCells.Add(new Vector3(x, y, z));
+        }
+      }
+    }
+    if (freeCells.Count == 0) return new Vector3();
+    return freeCells[random.Next(freeCells.Count)];
   }
 
   public List<PipeDirection> GetFreeDirections(Vector3 currentPos, List<PipeDirection> directions)
