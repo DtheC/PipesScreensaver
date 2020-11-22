@@ -25,14 +25,13 @@ public class DrawPipePrefab : MonoBehaviour
   {
     var trans = Instantiate(pipePrefab, position, Quaternion.identity).GetComponent<Transform>();
     trans.LookAt(position + direction);
-    trans.GetComponentInChildren<MeshRenderer>().material.color = colour;
+    trans.GetComponentInChildren<PipeVisuals>().Init(colour);
     trans.parent = rootTransform;
     if (drawJoin)
     {
       Transform t = Instantiate(joinPrefab, position, Quaternion.identity).GetComponent<Transform>();
       t.parent = rootTransform;
-      MeshRenderer mf = t.GetComponentInChildren<MeshRenderer>();
-      mf.material.color = colour;
+      t.GetComponentInChildren<PipeVisuals>().Init(colour);
     }
   }
 }
