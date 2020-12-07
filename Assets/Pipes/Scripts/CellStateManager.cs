@@ -9,7 +9,7 @@ public class CellStateManager : MonoBehaviour
 
   List<Vector3> visitedCoordinates;
   public BoundsDefiner boundsDefiner;
-  public MeshCollider meshCol;
+  public MeshCollider[] meshCol;
 
   int[,,] baseCells;
   int[,,] visitedCells;
@@ -43,11 +43,22 @@ public class CellStateManager : MonoBehaviour
       {
         for (int z = 0; z < cellCount.z; z++)
         {
-          visitedCells[x, y, z] = IsInCollider(meshCol, new Vector3(x, y, z)) ? 0 : 1;
+          visitedCells[x, y, z] = IsInAnyCollider(meshCol, new Vector3(x, y, z)) ? 0 : 1;
         }
       }
     }
     baseCells = visitedCells.Clone() as int[,,];
+  }
+
+  bool IsInAnyCollider(MeshCollider[] colliders, Vector3 point)
+  {
+    bool any = false;
+    foreach (var item in colliders)
+    {
+        bool o = IsInCollider(item, point);
+        if (o) any = true;
+    }
+    return any;
   }
 
    public bool IsInCollider(MeshCollider other, Vector3 point)

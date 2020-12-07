@@ -7,6 +7,7 @@ public class ResetSceneMonitor : MonoBehaviour
     public static ResetSceneMonitor Instance;
     public int ResetNumber;
     int resetCount = 0;
+    public DrawLineBasedOnDirection[] linesDrawers;
 
     void Awake() {
         Instance = this;
@@ -22,5 +23,9 @@ public class ResetSceneMonitor : MonoBehaviour
         CameraController.Instance.Reset();
         CellStateManager.Instance.Reset();
         DrawPipePrefab.Instance.Reset();
+        foreach (var item in linesDrawers)
+        {
+            item.Reset();
+        }
     }
 }

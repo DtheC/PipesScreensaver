@@ -11,6 +11,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
 
     Dictionary<PipeDirection, float> PipeChances;
     void Start() {
+      Reset();
         CurrentPosition = new Vector3(
           Random.Range(0, (int) 10),
           Random.Range(0, (int) 10),
@@ -19,6 +20,10 @@ public class DrawLineBasedOnDirection : MonoBehaviour
         PipeChances = new Dictionary<PipeDirection, float>();
         PipeDirections.ForEach(dir => PipeChances.Add(dir, 1f));
         StartCoroutine(DrawRoutine());
+    }
+
+    public void Reset() {
+      lineColour = PipeColourManager.Instance.GetRandomColour();
     }
 
     IEnumerator DrawRoutine() {

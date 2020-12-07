@@ -20,7 +20,6 @@ public class CaptureFrames : MonoBehaviour
             count++;
             string countString = count.ToString();
             while (countString.Length < 10) countString = "0" + countString;
-            string filename = "screen" + countString;
 
             // Create a texture the size of the screen, RGB24 format
             int width = Screen.width;
@@ -34,9 +33,8 @@ public class CaptureFrames : MonoBehaviour
             // Encode texture into PNG
             byte[] bytes = tex.EncodeToPNG();
             Destroy(tex);
-            Debug.LogError(Application.dataPath + "/../screenshots/SavedScreen.png");
             // For testing purposes, also write to a file in the project folder
-            File.WriteAllBytes(Application.dataPath + "/../screenshots/" + filename + ".png", bytes);
+            File.WriteAllBytes(Application.dataPath + "/../screenshots/" + countString + ".png", bytes);
             yield return null;
         }
     }
