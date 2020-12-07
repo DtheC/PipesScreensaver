@@ -12,9 +12,9 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     Dictionary<PipeDirection, float> PipeChances;
     void Start() {
         CurrentPosition = new Vector3(
-          Random.Range(0, (int) CellStateManager.Instance.cellCount.x),
-          Random.Range(0, (int) CellStateManager.Instance.cellCount.y),
-          Random.Range(0, (int) CellStateManager.Instance.cellCount.z)
+          Random.Range(0, (int) 10),
+          Random.Range(0, (int) 10),
+          Random.Range(0, (int) 10)
         );
         PipeChances = new Dictionary<PipeDirection, float>();
         PipeDirections.ForEach(dir => PipeChances.Add(dir, 1f));

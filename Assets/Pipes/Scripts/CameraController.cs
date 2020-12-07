@@ -5,12 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
   public static CameraController Instance;
+  public bool rotateCamera;
   void Awake()
   {
     Instance = this;
   }
   public void Reset()
   {
-    transform.Rotate(0, Random.Range(-50f, 50f), 0);
+    if (rotateCamera) transform.Rotate(0, Random.Range(-50f, 50f), 0);
   }
 }
