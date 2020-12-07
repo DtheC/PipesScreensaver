@@ -22,6 +22,8 @@ public class DrawLineBasedOnDirection : MonoBehaviour
     }
 
     IEnumerator DrawRoutine() {
+      yield return new WaitForEndOfFrame();
+      CurrentPosition = CellStateManager.Instance.GetFreeCell();
         while(true) {
             DrawPipe();
             yield return new WaitForSeconds(.05f);
