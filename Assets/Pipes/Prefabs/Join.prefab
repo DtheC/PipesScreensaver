@@ -124,3 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 5191040411892947279}
+  cellPosition: {x: 0, y: 0, z: 0}
+  FadeOut: 0

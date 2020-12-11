@@ -116,6 +116,11 @@ public class CellStateManager : MonoBehaviour
     visitedCells[(int)position.x, (int)position.y, (int)position.z] = 1;
   }
 
+  public void MarkasFree(Vector3 position)
+  {
+    visitedCells[(int)position.x, (int)position.y, (int)position.z] = 0;
+  }
+
   public Vector3 GetFreeCell()
   {
     List<Vector3> freeCells = new List<Vector3>();

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,6 +43,7 @@ public class DrawLineBasedOnDirection : MonoBehaviour
           // Debug.LogError("reached end of possible moves! Moving to free cell");
           ResetSceneMonitor.Instance.AddReset();
           CurrentPosition = CellStateManager.Instance.GetFreeCell();
+          // Reset(); // Uncomment to change line colour each time it starts in a new position
           return;
         }
         // int index = Random.Range(0, PipeDirections.Count);

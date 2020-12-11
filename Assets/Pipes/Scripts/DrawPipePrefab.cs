@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class DrawPipePrefab : MonoBehaviour
   public GameObject pipePrefab;
   public GameObject joinPrefab;
   public Transform rootTransform;
+
+  public Action<Vector3> PipeDestroyed;
 
   void Awake()
   {
@@ -23,15 +26,19 @@ public class DrawPipePrefab : MonoBehaviour
   }
   public void DrawPrefab(Vector3 position, Vector3 direction, Color colour, bool drawJoin = false)
   {
-    var trans = Instantiate(pipePrefab, position, Quaternion.identity).GetComponent<Transform>();
-    trans.LookAt(position + direction);
-    trans.GetComponentInChildren<PipeVisuals>().Init(colour);
-    trans.parent = rootTransform;
+    var pipeTransform = Instantiate(pipePrefab, position, Quaternion.identity).GetComponent<Transform>();
+    pipeTransform.LookAt(position + direction);
+    var pipeVisuals = pipeTransform.GetComponentInChildren<PipeVisuals>();
+    pipeVisuals.Init(colour);
+    pipeVisuals.cellPosition = position;
+    pipeTransform.parent = rootTransform;
     if (drawJoin)
     {
-      Transform t = Instantiate(joinPrefab, position, Quaternion.identity).GetComponent<Transform>();
-      t.parent = rootTransform;
-      t.GetComponentInChildren<PipeVisuals>().Init(colour);
+      Transform joinTransform = Instantiate(joinPrefab, position, Quaternion.identity).GetComponent<Transform>();
+      joinTransform.parent = rootTransform;
+      pipeVisuals = joinTransform.GetComponentInChildren<PipeVisuals>();
+      pipeVisuals.Init(colour);
+      pipeVisuals.cellPosition = position;
     }
   }
 }
